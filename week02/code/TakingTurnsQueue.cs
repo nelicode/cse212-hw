@@ -40,16 +40,23 @@ public class TakingTurnsQueue
         else
         {
             Person person = _people.Dequeue();
+            // if the person has more than 1 turn left
             if (person.Turns > 1)
             {
                 person.Turns -= 1;
                 _people.Enqueue(person);
             }
 
+            else if (person.Turns <= 0)
+            {
+                _people.Enqueue(person);
+            }
+            // If person.Turns == 1, they are NOT enqueued again (they used their last turn)
             return person;
+
+
         }
     }
-
     public override string ToString()
     {
         return _people.ToString();
