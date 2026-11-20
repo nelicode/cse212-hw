@@ -33,8 +33,19 @@ public class LinkedList : IEnumerable<int>
     public void InsertTail(int value)
     {
         // TODO Problem 1
-    }
+    Node nweNode = new(value);
+        if (_head is null)
+        {
 
+            _head = newNode;
+            _tail = newNode;
+        }
+        else
+        {
+            newNode.Prev = _tail;
+            _tail!.Next = newNode;
+            _tail = newNode;
+        }
 
     /// <summary>
     /// Remove the first node (i.e. the head) of the linked list.
@@ -66,7 +77,11 @@ public class LinkedList : IEnumerable<int>
     {
         // TODO Problem 2
     }
-
+     if (_head ==_tail)
+     {
+        _head = null;
+        _tail = null;
+     }
     /// <summary>
     /// Insert 'newValue' after the first occurrence of 'value' in the linked list.
     /// </summary>
